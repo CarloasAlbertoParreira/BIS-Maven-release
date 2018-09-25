@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>V2DigitalBitbucket</groupId>
   <artifactId>mapstogithubV2</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
   
   <!--using local custom repo -->
@@ -16,7 +16,7 @@
   <!-- release -->
   <scm>
   	<developerConnection>scm:git:https://github.com/EE-Maps/BIS-Maven-release.git</developerConnection>
-     <tag>mapstogithubV2-0.0.1</tag>
+     <tag>HEAD</tag>
   </scm>
    
   
