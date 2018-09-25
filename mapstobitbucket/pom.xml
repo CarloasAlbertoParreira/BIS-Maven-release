@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>V2DigitalBitbucket</groupId>
+  <artifactId>mapstogithubV2</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <!--using local custom repo -->
+  <repositories>
+  	<repository>
+  		<id>localCustomRepo</id>
+  		<url>/home/serb/Desktop/BIS_artifact/mapstogithubV2_local_custom_repo</url>	
+  	</repository>
+  </repositories>
+  
+  <!-- release -->
+  <scm>
+  	<developerConnection>scm:git:https://github.com/EE-Maps/BIS-Maven-release.git</developerConnection>
+  </scm>
+  
+  
+  
+  
+  
+  <build>
+  	<!--Developer checking from resources file
+  	 whether release is increased or not
+  	 
+  	  Project Versioning with Maven
+  	The ## characters allows Jetty
+   to determine both the name of the webapp and the version --> 
+  	<finalName>${project.artifactId}##${project.version}</finalName>
+  		
+  		<plugins>
+  			<!-- Add jetty deploy plugin -->
+  			<plugin>
+		  		<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.11.v20150529</version>
+				<configuration>
+					<path>/${project.artifactId}##${project.version}</path>
+					<webApp>
+						<contextPath>/mapstobitbucket</contextPath>
+					</webApp>
+					<httpConnector>
+						<port>8888</port>
+					</httpConnector>
+				</configuration>
+			</plugin>
+			
+			
+			<!-- Add maven release plugin -->	
+  			<plugin>
+    			<groupId>org.apache.maven.plugins</groupId>
+	  			<artifactId>maven-release-plugin</artifactId>
+	  			<version>2.5.3</version>
+    		</plugin>
+  		 			
+  		</plugins>
+  
+  		<resources>
+  		<!-- add counter 
+  			This replaces ${project.version}
+  			 in the /mapstobitbucket/src/main/resources/test.properties -->
+  			 
+  			 <resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+  		</resources>
+  		
+  		
+  
+  </build>
+  
+  
+  
+  
+</project>
